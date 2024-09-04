@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 import streamlit as st
 
 #load the updated model to be mode live
-model = joblib.load("liveModelVI.pkl")
+model = joblib.load("liveModelV1.pkl")
 
 #load the data to check accuarcy
 df = pd.read_csv('mobile_price_range_data.csv')
@@ -17,10 +17,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.2,random_s
 #make predictions for X_test set
 y_pred = model.predict(X_test)
 #Accuarcy
-accuracy = accuracy_score(y_train,y_test)
+accuracy = accuracy_score(y_pred,y_test)
 
-#calculate accuracy
-accuracy = accuracy_score(y_test,y_pred)
 #page title
 st.title("Model Accuracy and Real-Time Prediction")
 #Display accuracy
